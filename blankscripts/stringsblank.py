@@ -3,6 +3,8 @@
 
 import string
 
+# import settings
+
 
 def demonstrate_formatting():
     """Using classical formatting.
@@ -21,6 +23,12 @@ def demonstrate_fancy_formatting():
     """
 
 
+def demonstrate_fancy_formatting_with_f_strings():
+    """Using f-strings in formatting.
+    - format strings like f'Some text {some var}, more text {another var}...', etc.
+    """
+
+
 def demonstrate_string_operations():
     """Using different string operations.
     - endswith(), split(), center(), in (aka contains()), == (aka equals(), len(),...), strip() (lstrip(), rstrip())
@@ -29,4 +37,7 @@ def demonstrate_string_operations():
 
 if __name__ == '__main__':
 
-    pass
+    demonstrate_formatting()
+    demonstrate_fancy_formatting()
+    demonstrate_fancy_formatting_with_f_strings()
+    demonstrate_string_operations()

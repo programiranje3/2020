@@ -81,6 +81,22 @@ inception.print_year()
 # python.inception.print_year()
 print(__name__)
 
+# # Alternatively
+# import python.inception
+# python.inception.print_year()
+# # import python.inception
+# # python.inception.print_year()
+# print(__name__)
+
+# # Alternatively
+# from python.inception import *
+# print_year()
+# # import python.inception
+# # python.inception.print_year()
+# print(__name__)
+
+
+
 
 # # This is a sample Python script.
 #

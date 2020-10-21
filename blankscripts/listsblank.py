@@ -54,10 +54,18 @@ def demonstrate_list_comprehension():
     """Showing examples of list comprehension.
     - list comprehension over an array.array()
     - list comprehension over a list of strings
+    - list comprehension with enumerate(), to find indices of all occurrences of an element in a list
     Using str() and join() in printing results.
     """
+
+    # songs = ['Imagine a Man', 'There\'s a Place', 'No Expectations', 'Heaven is a Place on Earth']
 
 
 if __name__ == '__main__':
 
-    pass
+    demonstrate_lists()
+    demonstrate_list_methods()
+    demonstrate_arrays()
+    populate_empty_list()
+    duplicate_list()
+    demonstrate_list_comprehension()
