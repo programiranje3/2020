@@ -1,8 +1,8 @@
 """Demonstrates dictionaries
 From: https://qr.ae/TWCAvj:
 Python uses dictionaries all over the place:
-- the variables and functions in a module - stored in a dictionary
-- the local variables in a function - stored in a dictionary
+- the variables and functions in a module - stored in a dictionary  # can be shown using globals()
+- the local variables in a function - stored in a dictionary        # can be shown using locals(); see functions.py
 - the implementation of a function - a dictionary
 - a class is a dictionary
 - an instance of a class is another dictionary
@@ -41,10 +41,5 @@ def demonstrate_dict_sorting():
 
 
 if __name__ == '__main__':
-
     demonstrate_dictionaries()
     demonstrate_dict_sorting()
-
-    # print(globals())
-    # print(demonstrate_dict_sorting.__globals__)
-

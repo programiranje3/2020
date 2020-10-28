@@ -90,5 +90,5 @@ if __name__ == '__main__':
 
     # demonstrate_formatting()
     # demonstrate_fancy_formatting()
-    # demonstrate_fancy_formatting_with_f_strings()
-    demonstrate_string_operations()
+    demonstrate_fancy_formatting_with_f_strings()
+    # demonstrate_string_operations()
