@@ -1,8 +1,8 @@
 """Demonstrates dictionaries
 From: https://qr.ae/TWCAvj:
 Python uses dictionaries all over the place:
-- the variables and functions in a module - stored in a dictionary  # can be shown using globals()
-- the local variables in a function - stored in a dictionary        # can be shown using locals(); see functions.py
+- the variables and functions in a module - stored in a dictionary
+- the local variables in a function - stored in a dictionary
 - the implementation of a function - a dictionary
 - a class is a dictionary
 - an instance of a class is another dictionary
@@ -46,43 +46,17 @@ def sort_dictionary(d, by):
     - using lambda
     """
 
-    # if by == 'k':
-    #     return dict(sorted(zip(d.keys(), d.values())))
-    # elif by == 'v':
-    #     return dict(sorted(zip(d.values(), d.keys())))
-    # else:
-    #     return None
-
-    # from operator import itemgetter
-    # if by == 'k':
-    #     return dict(sorted(d.items(), key=itemgetter(0)))
-    # elif by == 'v':
-    #     return dict(sorted(d.items(), key=itemgetter(1)))
-    # else:
-    #     return None
-
-    if by == 'k':
-        return dict(sorted(d.items(), key=lambda i: i[0]))
-    elif by == 'v':
-        return dict(sorted(d.items(), key=lambda i: i[1]))
-    else:
-        return None
-
 
 def demonstrate_dict_sorting():
     """Demonstrate sorting a dictionary.
     """
 
-    john = {'name': 'John Lennon', 'year': '1940', 'city': 'Liverpool'}
-    print(sort_dictionary(john, 'v'))
-
 
 if __name__ == '__main__':
 
-    # demonstrate_dictionaries()
-    # demonstrate_dict_sorting()
+    demonstrate_dictionaries()
+    demonstrate_dict_sorting()
 
-    print(globals())
-    print(demonstrate_dict_sorting.__globals__)
-
+    # print(globals())
+    # print(demonstrate_dict_sorting.__globals__)
 
