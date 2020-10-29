@@ -129,6 +129,10 @@ def demonstrate_list_comprehension():
     print(' '.join(lyric))
     print()
 
+    songs = ['No Expectations', 'Imagine a Man', 'There\'s a Place', 'No Expectations', 'Heaven is a Place on Earth',
+             'No Expectations', 'No Expectations', ]
+    print([i for i, k in enumerate(songs) if k == 'No Expectations'])
+
 
 if __name__ == '__main__':
 

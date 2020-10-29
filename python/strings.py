@@ -64,6 +64,11 @@ def demonstrate_fancy_formatting_with_f_strings():
     john = 'John Lennon'
     birth_place = 'Liverpool'
     print(f'{john} was born in {year}, in {birth_place}.')
+    print()
+
+    from datetime import date
+    d = date(1940, 10, 9)
+    print(f'{john} was bor on {d.strftime(settings.PREFERRED_STRING_FORMAT)}, in {birth_place}.')
 
 
 def demonstrate_string_operations():

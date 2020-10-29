@@ -46,21 +46,43 @@ def sort_dictionary(d, by):
     - using lambda
     """
 
+    # if by == 'k':
+    #     return dict(sorted(zip(d.keys(), d.values())))
+    # elif by == 'v':
+    #     return dict(sorted(zip(d.values(), d.keys())))
+    # else:
+    #     return None
+
+    # from operator import itemgetter
+    # if by == 'k':
+    #     return dict(sorted(d.items(), key=itemgetter(0)))
+    # elif by == 'v':
+    #     return dict(sorted(d.items(), key=itemgetter(1)))
+    # else:
+    #     return None
+
+    if by == 'k':
+        return dict(sorted(d.items(), key=lambda i: i[0]))
+    elif by == 'v':
+        return dict(sorted(d.items(), key=lambda i: i[1]))
+    else:
+        return None
+
 
 def demonstrate_dict_sorting():
     """Demonstrate sorting a dictionary.
     """
 
     john = {'name': 'John Lennon', 'year': '1940', 'city': 'Liverpool'}
-    print(sort_dictionary(john, 'k'))
+    print(sort_dictionary(john, 'v'))
 
 
 if __name__ == '__main__':
 
     # demonstrate_dictionaries()
-    demonstrate_dict_sorting()
+    # demonstrate_dict_sorting()
 
-    # print(globals())
-    # print(demonstrate_dict_sorting.__globals__)
+    print(globals())
+    print(demonstrate_dict_sorting.__globals__)
 
 
