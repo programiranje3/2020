@@ -1,7 +1,7 @@
 """Demonstrates how operators and expressions work in Python.
 """
 
-# from settings import *
+from settings import *
 
 
 def demonstrate_arithmetic_operators():

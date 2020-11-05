@@ -2,6 +2,7 @@
 """
 
 
+# def demonstrate_annotations(musician, year=1940):
 def demonstrate_annotations(musician, year):
     """Demonstrates how to use annotations of
     function parameters/arguments (<arg>: <type>) and of function return type (def f(...) -> <type>:).
@@ -38,11 +39,10 @@ if __name__ == "__main__":
     ringo = 'Ringo Starr'
     the_beatles = [john, paul, george, ringo]
 
-    # demonstrate_annotations(john, 1940)
+    # demonstrate_annotations(john)
+    # demonstrate_annotations(musician, year=1957)
 
     # show_musician(john)
-    # show_musician(john, 1940)
-    # show_musician(john, city='New York')
 
     # use_flexible_arg_list('The Beatles', *the_beatles)
     # use_flexible_arg_list('The Beatles')

@@ -18,11 +18,6 @@ def demonstrate_zip():
     """Using the built-in zip() function with tuples and double-counter for-loop.
     """
 
-    john = ('John Lennon', 1940, 'Liverpool')
-    paul = ('Paul McCartney', 1942, 'Liverpool')
-    george = ('George Harrison', 1944, 'Liverpool')
-    ringo = ('Ringo Starr', 1940, 'Liverpool')
-
 
 def demonstrate_packing():
     """Packing and unpacking tuples.

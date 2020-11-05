@@ -3,7 +3,7 @@
 
 import string
 
-# import settings
+import settings
 
 
 def demonstrate_formatting():
