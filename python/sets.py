@@ -34,7 +34,7 @@ def demonstrate_sets():
     the_beatles = the_beatles - {'John', 'George'}
     print(the_beatles)
     print(sorted(the_beatles))
-    print("{'John', 'Paul'} | {'George', 'Ringo'}:", {'John', 'Paul'} & {'George', 'Ringo'})
+    print("{'John', 'Paul'} & {'George', 'Ringo'}:", {'John', 'Paul'} & {'George', 'Ringo'})
     print("{'John', 'Paul'} ^ {'George', 'Ringo'}:", {'John', 'Paul'} ^ {'George', 'Ringo'})
     print()
 

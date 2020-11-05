@@ -46,10 +46,40 @@ def sort_dictionary(d, by):
     - using lambda
     """
 
+    # # - using zip()
+    # if by == 'k':
+    #     return dict(sorted(zip(d.keys(), d.values())))
+    # elif (by == 'v') or (by == 'V'):
+    #     return dict(sorted(zip(d.values(), d.keys())))
+    # else:
+    #     return None
+
+    # - using operator.itemgetter()
+    # from operator import itemgetter
+    # if by == 'k':
+    #     return dict(sorted(d.items(), key=itemgetter(0)))
+    # elif (by == 'v') or (by == 'V'):
+    #     return dict(sorted(d.items(), key=itemgetter(1)))
+    # else:
+    #     return None
+
+    # - using lambda
+    from operator import itemgetter
+    if by == 'k':
+        return dict(sorted(d.items(), key=lambda item: item[0]))
+    elif (by == 'v') or (by == 'V'):
+        return dict(sorted(d.items(), key=lambda item: item[1]))
+    else:
+        return None
+
 
 def demonstrate_dict_sorting():
     """Demonstrate sorting a dictionary.
     """
+    john = {'name': 'John Lennon', 'birth_year': 1940, 'alive': False}
+    print(sort_dictionary(john, 'k'))
+    # print(sort_dictionary(john, 'V'))     # TypeError: '<' not supported between instances of 'int' and 'str'
+    print(sort_dictionary(john, 23))
 
 
 if __name__ == '__main__':
