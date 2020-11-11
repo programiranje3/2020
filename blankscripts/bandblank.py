@@ -5,7 +5,7 @@ It includes a list of Musician objects (band members) and the date when the band
 from datetime import date, datetime, time
 import json
 
-# from music.musician import Musician
+from music.musician import Musician
 # from util.utility import format_date
 
 
@@ -17,7 +17,18 @@ class Band():
     # Class variables: like static fields in Java; typically defined and initialized before __init__()
     # Insert a class variable (static field), such as definition, date_pattern,...
 
-    def __init__(self, *members, start=date.today()):
+    # formed_phrase_approx = 'the band was formed in '
+    # formed_phrase_date = 'the band was formed on '
+    # formed_phrase_approx_still_together = 'the band has been formed in '
+    # formed_phrase_date_still_together = 'the band has been formed on '
+    # formed_phrase_unknown = 'It is unknown when the band has been formed.'
+    # split_phrase_approx = 'the band split up in '
+    # split_phrase_date = 'the band split up on '
+    # split_phrase_negative = 'the band is still together.'
+    # split_phrase_unknown = 'It is unknown if he band is still together.'
+    # expected_keywords = ['formed', 'split']
+
+    def __init__(self, name, *members, formed=1955, split=date.today().year):
         pass                                            # introduce and initialize iterator counter, self.__i
 
     def __str__(self):
@@ -26,32 +37,49 @@ class Band():
     def __eq__(self, other):
         pass
 
+    def parse_band_str(self, band_str):
+        """Splits a band string in its typical segments.
+        """
+        pass
+
     # Alternative constructor 1
     @classmethod
-    def from_name_list(cls, names, start=date.today()):
+    def from_band_str_year(cls, band_str):
         pass
 
     # Alternative constructor 2
     @classmethod
-    def from_band_str(cls, band_str):
+    def from_band_str_date(cls, band_str):
         pass
 
     @staticmethod
     def is_date_valid(d):
         """It is assumed that a band does not perform together since more than ~60 years ago.
-        So, the valid date to denote the start of a band's career is between Jan 01, 1960, and today."""
+        So, the valid date to denote the start of a band's career is between Jan 01, 1960, and today.
+        """
 
         pass
 
     def __iter__(self):
+        """Once __iter__() and __next__() are implemented in a class,
+        we can create an iterator object by calling the iter() built-in function on an object of the class,
+        and then call the next() built-in function on that object.
+        It is often sufficient to just return self in __iter__(),
+        if the iterator counter such as self.__i is introduced and initialized in __init__().
+        Alternatively, the iterator counter (self.__i) is introduced and initialized  here.
+        """
+
         pass
+        # return self               # sufficient if the iterator counter is introduced and initialized in __init__()
 
     def __next__(self):
         pass
 
 
-def next_member(lineup):
+def next_member(band):
     """Generator that shows members of a band, one at a time.
+    yield produces a generator object, on which we call the next() built-in function.
+    A great tutorial on generators: https://realpython.com/introduction-to-python-generators/.
     """
 
 
@@ -65,7 +93,7 @@ class BandEncoder(json.JSONEncoder):
         pass
 
 
-def band_json_to_py(lineup_json):
+def band_json_to_py(members_json):
     """JSON decoder for Band objects (object_hook parameter in json.loads()).
     """
 
@@ -74,23 +102,22 @@ if __name__ == "__main__":
 
     # from testdata.musicians import *
 
-    # class variables (like static fields in Java; typically defined and initialized before __init__())
-    # object class (like the Object class in Java; all classes inherit from object
-    #   try, e.g., list.__mro__ in the console)
-    #   object class defines object.__eq__(self, other) etc.
-    #   object.__ne__(self, other), the inverse of object.__eq__(self, other),
-    #   is provided by Python automatically once object.__eq__(self, other) is implemented
+    johnLennon = Musician('John Lennon', is_band_member=True)
+    paulMcCartney = Musician('Paul McCartney', is_band_member=True)
+    georgeHarrison = Musician('George Harrison', is_band_member=True)
+    ringoStarr = Musician('Ringo Starr', is_band_member=True)
+    theBeatlesList = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
 
     # Check the basic methods (__init__(), __str__(),...)
     print()
 
-    # Check the alternative constructor 1 (@classmethod from_name_list(name_list))
+    # Check the alternative constructor 1 (@classmethod from_band_str_year(<band_str>))
     print()
 
-    # Check the alternative constructor 2 (@classmethod from_band_str(band_str))
+    # Check the alternative constructor 2 (@classmethod from_band_str_date(<band_str>))
     print()
 
-    # Check date validator (@staticmethod validate_date(date))
+    # Check date validator (@staticmethod is_date_valid(<date>))
     print()
 
     # Check the iterator

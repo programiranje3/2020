@@ -84,6 +84,9 @@ class Singer(Musician):
     """The class describing the concept of singer.
     It is assumed that a singer is sufficiently described as a Musician,
     with the addition of whether they are a lead or a background singer.
+
+    Useful link (related to inheritance in Python):
+    https://stackoverflow.com/questions/3394835/use-of-args-and-kwargs/3394902#3394902 (calling super() in constructors)
     """
 
     # Version 1 - no multiple inheritance
@@ -116,12 +119,17 @@ class Songwriter(Musician):
 class SingerSongwriter(Singer, Songwriter):
     """The class describing the concept of singer-songwriter.
     It is assumed that a singer-songwriter is sufficiently described as a Singer who is simultaneously a Songwriter.
+
+    Useful links :
+    https://stackoverflow.com/a/50465583/1899061 (designing classes (i.e. their __init__() methods) for multiple inh.)
+    https://stackoverflow.com/a/533675/1899061 (mixins explained, and what good they are in multiple inheritance)
     """
 
 
 if __name__ == "__main__":
 
-    from testdata.musicians import *
+    # from testdata.musicians import *
+    johnLennon = Musician('John Lennon', is_band_member=True)
 
     # Print objects
     john = Musician('John Lennon', is_band_member=True)
@@ -164,7 +172,7 @@ if __name__ == "__main__":
     # - o.__dir__
     # - o.__dict__
 
-    # Demonstrate object data fields and methods in Python Console for Musician objects
+    # Demonstrate object data fields and methods for Musician objects
     print()
 
     # Demonstrate @classmethod (from_str())
