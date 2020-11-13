@@ -58,14 +58,7 @@ if __name__ == "__main__":
 
     # from testdata.musicians import *
 
-    # day1_performers = [melanie, arloGuthrie]
-    # day1_lineup = Lineup(*day1_performers, date=date(1969, 8, 15))
-    # day2_performers = [gratefulDead, jeffersonAirplane, theWho, ccr]
-    # day2_lineup = Lineup(*day2_performers, date=date(1969, 8, 16))
-    # day3_performers = [csny, jimiHendrix, theBand]
-    # day3_lineup = Lineup(*day3_performers, date=date(1969, 8, 17))
-
-    # Create a Festival object
+    # Create a Studio object
     print()
 
     # Demonstrate exceptions
@@ -77,7 +70,7 @@ if __name__ == "__main__":
     # Demonstrate exceptions - except: <exception> as <e> (and then type(<e>), <e>.__class__.__name__, <e>.args,...)
     print()
 
-    # Demonstrate exceptions - user-defined exceptions (wrong festival date(s), wrong lineup date)
+    # Demonstrate exceptions - user-defined exceptions (wrong recording date(s), wrong band start date)
     print()
 
     # Demonstrate writing to a text file
@@ -95,7 +88,7 @@ if __name__ == "__main__":
     # Demonstrate get_project_dir(), get_data_dir() and writing/reading to/from files in data dir
     print()
 
-    # Demonstrate JSON encoding/decoding of Festival objects
+    # Demonstrate JSON encoding/decoding of Studio objects
     # Single object
     print()
 
