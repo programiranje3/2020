@@ -107,6 +107,11 @@ def next_member(band):
     A great tutorial on generators: https://realpython.com/introduction-to-python-generators/.
     """
 
+    for member in band.members:
+        input('Next: ')
+        yield member
+        print('Yeah!')
+
 
 class BandEncoder(json.JSONEncoder):
     """JSON encoder for Band objects.
@@ -142,45 +147,51 @@ if __name__ == "__main__":
     theBeatlesList = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
 
     theBeatles = Band('The Beatles', *theBeatlesList, formed=1962, split=1970)
-    print(theBeatles)
-    print()
-    Band.parse_band_str(str(theBeatles))
-    print()
+    # print(theBeatles)
+    # print()
+    # Band.parse_band_str(str(theBeatles))
+    # print()
+    #
+    # # Check the alternative constructor 1 (@classmethod from_band_str_year(<band_str>))
+    # print(Band.from_band_str_year(str(theBeatles)))
+    # print()
 
-    # Check the alternative constructor 1 (@classmethod from_band_str_year(<band_str>))
-    print(Band.from_band_str_year(str(theBeatles)))
-    print()
-
-    # Check the alternative constructor 2 (@classmethod from_band_str_date(<band_str>))
-    print()
-
-    # Check date validator (@staticmethod is_date_valid(<date>))
-    print(Band.is_date_valid(date(1980, 1, 23)))
-    print()
-
-    # Check the iterator
-    m_iterator = iter(theBeatles)
+    # # Check the alternative constructor 2 (@classmethod from_band_str_date(<band_str>))
+    # print()
+    #
+    # # Check date validator (@staticmethod is_date_valid(<date>))
+    # print(Band.is_date_valid(date(1980, 1, 23)))
+    # print()
+    #
+    # # Check the iterator
+    # m_iterator = iter(theBeatles)
+    # while True:
+    #     try:
+    #         print(next(m_iterator))
+    #     except StopIteration:
+    #         break
+    # print()
+    #
+    # # Repeated attempt to run the iterator fails, because the iterator is exhausted
+    # # print(next(m_iterator))
+    #
+    # # Demonstrate generators
+    # print()
+    #
+    # # Demonstrate generator expressions
+    m = next_member(theBeatles)
     while True:
         try:
-            print(next(m_iterator))
+            print(next(m))
         except StopIteration:
             break
     print()
-
-    # Repeated attempt to run the iterator fails, because the iterator is exhausted
-    # print(next(m_iterator))
-
-    # Demonstrate generators
-    print()
-
-    # Demonstrate generator expressions
-    print()
-
-    # Demonstrate JSON encoding/decoding of Band objects
-    # Single object
-    print()
-
-    # List of objects
-    print()
+    #
+    # # Demonstrate JSON encoding/decoding of Band objects
+    # # Single object
+    # print()
+    #
+    # # List of objects
+    # print()
 
 
