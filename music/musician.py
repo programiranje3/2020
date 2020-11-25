@@ -78,17 +78,25 @@ class Musician:
 
 
 class MusicianEncoder(json.JSONEncoder):
-    """JSON encoder for musician objects.
+    """JSON encoder for Musician objects (cls= parameter in json.dumps()).
     """
 
-    def default(self, o):
+    def default(self, musician):
         # recommendation: always use double quotes with JSON
 
+        # can simply return musician_py_to_json(musician), to avoid code duplication
         pass
 
 
+def musician_py_to_json(musician):
+    """JSON encoder for Musician objects (default= parameter in json.dumps()).
+    """
+
+    # recommendation: always use double quotes with JSON
+
+
 def musician_json_to_py(musician_json):
-    """JSON decoder for Musician objects (object_hook parameter in json.loads()).
+    """JSON decoder for Musician objects (object_hook= parameter in json.loads()).
     """
 
 
@@ -176,27 +184,27 @@ class SingerSongwriter(Songwriter, Singer, ):
 
 if __name__ == "__main__":
 
-    # from testdata.musicians import *
-    johnLennon = Musician('John Lennon', is_band_member=True)
+    # # from testdata.musicians import *
+    # johnLennon = Musician('John Lennon', is_band_member=True)
 
-    # Print objects
-    john = Musician('John Lennon', is_band_member=True)
-    print(john.name)
-    # john.name = 'Lennon'
-    print(john)
-    print()
+    # # Print objects
+    # john = Musician('John Lennon', is_band_member=True)
+    # print(john.name)
+    # # john.name = 'Lennon'
+    # print(john)
+    # print()
 
-    # Compare objects
-    print(john == johnLennon)
-    print(john.__eq__(johnLennon))
-    print(john.__ne__(johnLennon))
-    print()
+    # # Compare objects
+    # print(john == johnLennon)
+    # print(john.__eq__(johnLennon))
+    # print(john.__ne__(johnLennon))
+    # print()
 
     # Access data fields (instance variables), including 'private' fields
     # print(johnLennon.m)
     # print(johnLennon.__n)
     # print(johnLennon._Musician__n)
-    print()
+    # print()
 
     # # Add new data fields (instance variables)
     # # johnLennon.city = 'Liverpool'
@@ -208,16 +216,16 @@ if __name__ == "__main__":
     # #   3. setattr(<object>, '<new_attr>', <value>))        # counterpart: getattr(<object>, '<attr>')
     # print()
 
-    # Calling methods
-    # john.play('Nobody Told Me')
-    # john.play_song('Nobody Told Me')
-    print(johnLennon.play('I Saw Her Standing There', 'Thank you!',
-                          rhythm_count='One, two, three, four',
-                          end='Good night!'))
-    print(johnLennon.play_song('I Saw Her Standing There', 'Thank you!',
-                               rhythm_count='One, two, three, four',
-                               end='Good night!'))
-    print()
+    # # Calling methods
+    # # john.play('Nobody Told Me')
+    # # john.play_song('Nobody Told Me')
+    # print(johnLennon.play('I Saw Her Standing There', 'Thank you!',
+    #                       rhythm_count='One, two, three, four',
+    #                       end='Good night!'))
+    # print(johnLennon.play_song('I Saw Her Standing There', 'Thank you!',
+    #                            rhythm_count='One, two, three, four',
+    #                            end='Good night!'))
+    # print()
 
     # Demonstrate object data fields and methods in Python Console for some built-in classes (boolean, int, object,...)
     # - True + 1
@@ -228,48 +236,52 @@ if __name__ == "__main__":
     # - o.__dir__
     # - o.__dict__
 
-    # Demonstrate object data fields and methods for Musician objects
-    print(johnLennon.__dict__)
-    print(johnLennon.complete_info)
-    print()
+    # # Demonstrate object data fields and methods for Musician objects
+    # print(johnLennon.__dict__)
+    # print(johnLennon.complete_info)
+    # print()
 
-    # Demonstrate @classmethod (from_str())
-    print(Musician.from_str(str(johnLennon)))
-    print()
+    # # Demonstrate @classmethod (from_str())
+    # print(Musician.from_str(str(johnLennon)))
+    # print()
 
-    # Demonstrate inheritance
-    # object class (like the Object class in Java; all classes inherit from object
-    #   try, e.g., list.__mro__ in the console)
-    #   object class defines object.__eq__(self, other) etc.
-    #   object.__ne__(self, other), the inverse of object.__eq__(self, other),
-    #   is provided by Python automatically once object.__eq__(self, other) is implemented
-    jL = Singer(name='John Lennon', vocals=Vocals.LEAD_VOCALS, is_band_member=True)
-    print(jL)
-    johnL = Songwriter(name="John Lennon", instrument=Instrument.RHYTHM_GUITAR)
-    print(johnL)
-    johnL.what_do_you_do()
-    print()
+    # # Demonstrate inheritance
+    # # object class (like the Object class in Java; all classes inherit from object
+    # #   try, e.g., list.__mro__ in the console)
+    # #   object class defines object.__eq__(self, other) etc.
+    # #   object.__ne__(self, other), the inverse of object.__eq__(self, other),
+    # #   is provided by Python automatically once object.__eq__(self, other) is implemented
+    # jL = Singer(name='John Lennon', vocals=Vocals.LEAD_VOCALS, is_band_member=True)
+    # print(jL)
+    # johnL = Songwriter(name="John Lennon", instrument=Instrument.RHYTHM_GUITAR)
+    # print(johnL)
+    # johnL.what_do_you_do()
+    # print()
 
-    # Demonstrate method overriding
-    print(jL.play('I Saw Her Standing There', 'Thank you!',
-                          rhythm_count='One, two, three, four',
-                          end='Good night!'))
-    print()
+    # # Demonstrate method overriding
+    # print(jL.play('I Saw Her Standing There', 'Thank you!',
+    #                       rhythm_count='One, two, three, four',
+    #                       end='Good night!'))
+    # print()
 
-    # Demonstrate multiple inheritance and MRO.
-    # Make sure to read this first: https://stackoverflow.com/a/50465583/1899061 (especially Scenario 3).
-    lennon = SingerSongwriter(name='John Lennon',
-                              vocals=Vocals.LEAD_VOCALS,
-                              instrument=Instrument.RHYTHM_GUITAR,
-                              is_band_member=True)
-    print(lennon)
-    print(SingerSongwriter.__mro__)
-    print()
+    # # Demonstrate multiple inheritance and MRO.
+    # # Make sure to read this first: https://stackoverflow.com/a/50465583/1899061 (especially Scenario 3).
+    # lennon = SingerSongwriter(name='John Lennon',
+    #                           vocals=Vocals.LEAD_VOCALS,
+    #                           instrument=Instrument.RHYTHM_GUITAR,
+    #                           is_band_member=True)
+    # print(lennon)
+    # print(SingerSongwriter.__mro__)
+    # print()
 
-    # Demonstrate JSON encoding/decoding of Performer objects
+    # # Demonstrate JSON encoding/decoding of Performer objects
     # Single object
     print()
 
-    # List of objects
-    print()
+    # # List of objects
+    # johnLennon = Musician('John Lennon', is_band_member=True)
+    # paulMcCartney = Musician('Paul McCartney', is_band_member=True)
+    # georgeHarrison = Musician('George Harrison', is_band_member=True)
+    # ringoStarr = Musician('Ringo Starr', is_band_member=True)
+    # the_beatles = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
 

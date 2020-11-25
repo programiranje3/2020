@@ -60,17 +60,25 @@ class Musician:
 
 
 class MusicianEncoder(json.JSONEncoder):
-    """JSON encoder for musician objects.
+    """JSON encoder for Musician objects (cls= parameter in json.dumps()).
     """
 
-    def default(self, o):
+    def default(self, musician):
         # recommendation: always use double quotes with JSON
 
         pass
+        # can simply return musician_py_to_json(musician), to avoid code duplication
+
+
+def musician_py_to_json(musician):
+    """JSON encoder for Musician objects (default= parameter in json.dumps()).
+    """
+
+    # recommendation: always use double quotes with JSON
 
 
 def musician_json_to_py(musician_json):
-    """JSON decoder for Musician objects (object_hook parameter in json.loads()).
+    """JSON decoder for Musician objects (object_hook= parameter in json.loads()).
     """
 
 

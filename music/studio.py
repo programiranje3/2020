@@ -22,8 +22,8 @@ class Studio:
     def __init__(self, name, location, *bands, start_date=date(1961, 1, 1), end_date=date(1970, 12, 31)):
         if start_date > end_date:
             raise RecordingDateError(start_date, end_date)
-        elif not all([band.formed < end_date for band in bands]):
-            raise BandStartDateError(bands[[band.formed < end_date for band in bands].index(False)], end_date)
+        elif not all([band.formed < end_date.year for band in bands]):
+            raise BandStartDateError(bands[[band.formed < end_date.year for band in bands].index(False)], end_date)
         else:
             self.name = name
             self.location = location
@@ -63,17 +63,22 @@ class BandStartDateError(StudioError):
 
 
 class StudioEncoder(json.JSONEncoder):
-    """JSON encoder for Studio objects.
+    """JSON encoder for Studio objects (cls= parameter in json.dumps()).
     """
 
-    def default(self, o):
+    def default(self, studio):
         # recommendation: always use double quotes with JSON
 
         pass
 
 
+def studio_py_to_json(studio):
+    """JSON encoder for Studio objects (default= parameter in json.dumps()).
+    """
+
+
 def studio_json_to_py(studio_json):
-    """JSON decoder for Studio objects (object_hook parameter in json.loads()).
+    """JSON decoder for Studio objects (object_hook= parameter in json.loads()).
     """
 
 
@@ -130,25 +135,34 @@ if __name__ == "__main__":
         print("That's it.")
 
     # Demonstrate writing to a text file - <outfile>.write(), <outfile>.writelines()
-
     print()
 
     # Demonstrate reading from a text file - <infile>.read(), <infile>.readline()
     print()
 
-    # Demonstrate writing to a binary file - pickle.dump() and <f>.write()/<f>.writelines() with str.encode(<obj>)
+    # Demonstrate writing to a binary file - pickle.dump()
     print()
 
-    # Demonstrate reading from a binary file - pickle.load() and <f>.read().decode()/<f>.readlines().decode()
+    # Demonstrate reading from a binary file - pickle.load()
     print()
 
-    # Demonstrate get_project_dir(), get_data_dir() and writing/reading to/from files in data dir
+    # # Demonstrate JSON encoding/decoding of Studio objects
+    # # Single object
+    # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
+    #                    formed=1962, split=1970)
+    # pink_floyd = Band('Pink Floyd', rogerWaters, nickMason, rickWright, davidGilmour,
+    #                   formed=1965, split=1995)
+    # abbey_road = Studio('Abbey Road', 'London', *[the_beatles, pink_floyd],
+    #                     start_date=date(1967, 1, 1), end_date=date(1967, 12, 31), )
     print()
 
-    # Demonstrate JSON encoding/decoding of Studio objects
-    # Single object
-    print()
-
-    # List of objects
-    print()
+    # # List of objects
+    # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
+    #                    formed=1962, split=1970)
+    # pink_floyd = Band('Pink Floyd', rogerWaters, nickMason, rickWright, davidGilmour,
+    #                   formed=1965, split=1995)
+    # abbey_road_1 = Studio('Abbey Road', 'London', *[the_beatles, pink_floyd],
+    #                     start_date=date(1967, 1, 1), end_date=date(1967, 12, 31), )
+    # abbey_road_2 = Studio('Abbey Road', 'London', *[the_beatles, pink_floyd],
+    #                     start_date=date(1967, 1, 1), end_date=date(1967, 12, 31), )
 

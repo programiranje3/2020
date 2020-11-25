@@ -25,7 +25,7 @@ class Band():
     # split_phrase_approx = 'the band split up in '
     # split_phrase_date = 'the band split up on '
     # split_phrase_negative = 'the band is still together.'
-    # split_phrase_unknown = 'It is unknown if he band is still together.'
+    # split_phrase_unknown = 'It is unknown if the band is still together.'
     # expected_keywords = ['formed', 'split']
 
     def __init__(self, name, *members, formed=1955, split=date.today().year):
@@ -84,17 +84,22 @@ def next_member(band):
 
 
 class BandEncoder(json.JSONEncoder):
-    """JSON encoder for Band objects.
+    """JSON encoder for Band objects (cls= parameter in json.dumps()).
     """
 
-    def default(self, o):
+    def default(self, band):
         # recommendation: always use double quotes with JSON
 
-        pass
+        return
 
 
-def band_json_to_py(members_json):
-    """JSON decoder for Band objects (object_hook parameter in json.loads()).
+def band_py_to_json(band):
+    """JSON encoder for Band objects (default= parameter in json.dumps()).
+    """
+
+
+def band_json_to_py(band_json):
+    """JSON decoder for Band objects (object_hook= parameter in json.loads()).
     """
 
 

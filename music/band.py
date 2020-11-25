@@ -25,7 +25,7 @@ class Band():
     split_phrase_approx = 'the band split up in '
     split_phrase_date = 'the band split up on '
     split_phrase_negative = 'the band is still together.'
-    split_phrase_unknown = 'It is unknown if he band is still together.'
+    split_phrase_unknown = 'It is unknown if the band is still together.'
     expected_keywords = ['formed', 'split']
 
     # def __init__(self, name, *members, formed=date.today(), split=date.today()):
@@ -114,23 +114,28 @@ def next_member(band):
 
 
 class BandEncoder(json.JSONEncoder):
-    """JSON encoder for Band objects.
+    """JSON encoder for Band objects (cls= parameter in json.dumps()).
     """
 
-    def default(self, o):
+    def default(self, band):
         # recommendation: always use double quotes with JSON
 
         pass
 
 
-def band_json_to_py(members_json):
-    """JSON decoder for Band objects (object_hook parameter in json.loads()).
+def band_py_to_json(band):
+    """JSON encoder for Band objects (default= parameter in json.dumps()).
+    """
+
+
+def band_json_to_py(band_json):
+    """JSON decoder for Band objects (object_hook= parameter in json.loads()).
     """
 
 
 if __name__ == "__main__":
 
-    # from testdata.musicians import *
+    from testdata.musicians import *
 
     # class variables (like static fields in Java; typically defined and initialized before __init__())
     # object class (like the Object class in Java; all classes inherit from object
@@ -139,14 +144,14 @@ if __name__ == "__main__":
     #   object.__ne__(self, other), the inverse of object.__eq__(self, other),
     #   is provided by Python automatically once object.__eq__(self, other) is implemented
 
-    # Check the basic methods (__init__(), __str__(),...)
-    johnLennon = Musician('John Lennon', is_band_member=True)
-    paulMcCartney = Musician('Paul McCartney', is_band_member=True)
-    georgeHarrison = Musician('George Harrison', is_band_member=True)
-    ringoStarr = Musician('Ringo Starr', is_band_member=True)
-    theBeatlesList = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
+    # # Check the basic methods (__init__(), __str__(),...)
+    # johnLennon = Musician('John Lennon', is_band_member=True)
+    # paulMcCartney = Musician('Paul McCartney', is_band_member=True)
+    # georgeHarrison = Musician('George Harrison', is_band_member=True)
+    # ringoStarr = Musician('Ringo Starr', is_band_member=True)
+    # theBeatlesList = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
 
-    theBeatles = Band('The Beatles', *theBeatlesList, formed=1962, split=1970)
+    # theBeatles = Band('The Beatles', *theBeatlesList, formed=1962, split=1970)
     # print(theBeatles)
     # print()
     # Band.parse_band_str(str(theBeatles))
@@ -179,19 +184,24 @@ if __name__ == "__main__":
     # print()
     #
     # # Demonstrate generator expressions
-    m = next_member(theBeatles)
-    while True:
-        try:
-            print(next(m))
-        except StopIteration:
-            break
-    print()
-    #
+    # m = next_member(theBeatles)
+    # while True:
+    #     try:
+    #         print(next(m))
+    #     except StopIteration:
+    #         break
+    # print()
+
     # # Demonstrate JSON encoding/decoding of Band objects
     # # Single object
+    # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
+    #                    formed=1962, split=1970)
     # print()
-    #
+
     # # List of objects
-    # print()
+    # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
+    #                    formed=1962, split=1970)
+    # pink_floyd = Band('Pink Floyd', rogerWaters, nickMason, rickWright, davidGilmour,
+    #                   formed=1965, split=1995)
 
 
