@@ -8,7 +8,7 @@ from pickle import dump, load
 
 from music.musician import *
 from music.band import *
-# from util.utility import *
+from util.utility import *
 
 import json
 
@@ -107,43 +107,68 @@ if __name__ == "__main__":
     # Demonstrate exceptions - except: Exception as <e> (and then type(<e>), <e>.__class__.__name__, <e>.args,...)
     print()
 
-    # Demonstrate exceptions - user-defined exceptions (wrong recording date(s), wrong band start date)
-    the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
-                       formed=date(1972, 8, 18), split=date(1970, 4, 10))
-    pink_floyd = Band('Pink Floyd', rogerWaters, nickMason, rickWright, davidGilmour,
-                      formed=date(1965, 2, 12), split=date(1995, 3, 14))
-    try:
-        abbey_road = Studio('Abbey Road', 'London', the_beatles, pink_floyd,
-                            start_date=date(1967, 1, 1), end_date=date(1967, 12, 31))
-        # print(4/0)
-    except RecordingDateError as e:
-        # print(f'Caught {e.__class__.__name__} exception: {e.message}')
-        sys.stderr.write(f'Caught {e.__class__.__name__} exception: {e.message}\n')
-        raise
-    except BandStartDateError as e:
-        # print(f'Caught {e.__class__.__name__} exception: {e.message}')
-        # sys.stderr.write(f'Caught {e.__class__.__name__} exception: {e.message}\n')
-        sys.stderr.write(f'Caught {e.__class__.__name__} exception: {e.args[0]}\n')
-        raise
-    except Exception as e:
-        # print(f'Caught {e.__class__.__name__} exception')
-        sys.stderr.write(f'Caught {e.__class__.__name__} exception')
-        raise
-    else:
-        print("It's OK.")
-    finally:
-        print("That's it.")
+    # # Demonstrate exceptions - user-defined exceptions (wrong recording date(s), wrong band start date)
+    # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
+    #                    formed=date(1972, 8, 18), split=date(1970, 4, 10))
+    # pink_floyd = Band('Pink Floyd', rogerWaters, nickMason, rickWright, davidGilmour,
+    #                   formed=date(1965, 2, 12), split=date(1995, 3, 14))
+    # try:
+    #     abbey_road = Studio('Abbey Road', 'London', the_beatles, pink_floyd,
+    #                         start_date=date(1967, 1, 1), end_date=date(1967, 12, 31))
+    #     # print(4/0)
+    # except RecordingDateError as e:
+    #     # print(f'Caught {e.__class__.__name__} exception: {e.message}')
+    #     sys.stderr.write(f'Caught {e.__class__.__name__} exception: {e.message}\n')
+    #     raise
+    # except BandStartDateError as e:
+    #     # print(f'Caught {e.__class__.__name__} exception: {e.message}')
+    #     # sys.stderr.write(f'Caught {e.__class__.__name__} exception: {e.message}\n')
+    #     sys.stderr.write(f'Caught {e.__class__.__name__} exception: {e.args[0]}\n')
+    #     raise
+    # except Exception as e:
+    #     # print(f'Caught {e.__class__.__name__} exception')
+    #     sys.stderr.write(f'Caught {e.__class__.__name__} exception')
+    #     raise
+    # else:
+    #     print("It's OK.")
+    # finally:
+    #     print("That's it.")
 
     # Demonstrate writing to a text file - <outfile>.write(), <outfile>.writelines()
-    print()
+    the_beatles = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
+    # file = get_data_dir() / 'the_beatles.txt'
+    # with open(file, 'w') as f:
+    #     # for beatle in the_beatles:
+    #     #     f.write(str(beatle) + '\n')
+    #     f.writelines([str(beatle) + '\n' for beatle in the_beatles])
+    # print()
 
-    # Demonstrate reading from a text file - <infile>.read(), <infile>.readline()
-    print()
+    # # Demonstrate reading from a text file - <infile>.read(), <infile>.readline()
+    # theBeatles = []
+    # with open(file, 'r') as f:
+    #     # s = f.read()
+    #     # print(s)
+    #     while True:
+    #         m = f.readline()
+    #         if m:
+    #             theBeatles.append(Musician.from_str(m))
+    #         else:
+    #             break
+    # print(theBeatles)
+    # print(theBeatles == the_beatles)
+    # print()
 
     # Demonstrate writing to a binary file - pickle.dump()
-    print()
+    file = get_data_dir() / 'the_beatles.pickled'
+    # with open(file, 'wb') as f:
+    #     dump(the_beatles, f)
+    # print()
 
     # Demonstrate reading from a binary file - pickle.load()
+    with open(file, 'rb') as f:
+        theBeatles = load(f)
+    print(theBeatles)
+    print(theBeatles == the_beatles)
     print()
 
     # # Demonstrate JSON encoding/decoding of Studio objects

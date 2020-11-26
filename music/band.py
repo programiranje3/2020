@@ -5,7 +5,7 @@ It includes a list of Musician objects (band members) and the date when the band
 from datetime import date, datetime, time
 import json
 
-from music.musician import Musician
+from music.musician import Musician, musician_py_to_json, musician_json_to_py
 # from util.utility import format_date
 
 
@@ -127,10 +127,25 @@ def band_py_to_json(band):
     """JSON encoder for Band objects (default= parameter in json.dumps()).
     """
 
+    if isinstance(band, Band):
+        d = band.__dict__.copy()
+        d["members"] = json.dumps(band.members, default=musician_py_to_json)
+        return {"__Band__": d}
+    else:
+        raise TypeError(f'object of type {band.__class__.__name__}')
+
 
 def band_json_to_py(band_json):
     """JSON decoder for Band objects (object_hook= parameter in json.loads()).
     """
+
+    if "__Band__" in band_json:
+        b = Band('')
+        b.__dict__.update(band_json["__Band__"])
+        b.members = tuple(json.loads(b.members, object_hook=musician_json_to_py))
+        return b
+    else:
+        return band_json
 
 
 if __name__ == "__main__":
@@ -193,10 +208,14 @@ if __name__ == "__main__":
     # print()
 
     # # Demonstrate JSON encoding/decoding of Band objects
-    # # Single object
-    # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
-    #                    formed=1962, split=1970)
-    # print()
+    # Single object
+    the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
+                       formed=1962, split=1970)
+    the_beatles_json = json.dumps(the_beatles, default=band_py_to_json, indent=4)
+    print(the_beatles_json)
+    the_beatles_py = json.loads(the_beatles_json, object_hook=band_json_to_py)
+    print(the_beatles_py == the_beatles)
+    print()
 
     # # List of objects
     # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],

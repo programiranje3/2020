@@ -85,7 +85,7 @@ class MusicianEncoder(json.JSONEncoder):
         # recommendation: always use double quotes with JSON
 
         # can simply return musician_py_to_json(musician), to avoid code duplication
-        pass
+        return musician_py_to_json(musician)
 
 
 def musician_py_to_json(musician):
@@ -94,10 +94,22 @@ def musician_py_to_json(musician):
 
     # recommendation: always use double quotes with JSON
 
+    if isinstance(musician, Musician):
+        d = musician.__dict__.copy()
+        return {"__Musician__": d}
+    else:
+        raise TypeError(f'object of type {musician.__class__.__name__}')
+
 
 def musician_json_to_py(musician_json):
     """JSON decoder for Musician objects (object_hook= parameter in json.loads()).
     """
+
+    if "__Musician__" in musician_json:
+        m = Musician('')
+        m.__dict__.update(musician_json["__Musician__"])
+        return m
+    return musician_json
 
 
 class Singer(Musician):
@@ -275,13 +287,27 @@ if __name__ == "__main__":
     # print()
 
     # # Demonstrate JSON encoding/decoding of Performer objects
-    # Single object
-    print()
+    # # Single object
+    # johnLennon = Musician('John Lennon', is_band_member=True)
+    # johnLennon_json = json.dumps(johnLennon, default=musician_py_to_json, indent=4)
+    # # johnLennon_json = json.dumps(johnLennon, cls=MusicianEncoder, indent=4)
+    # # from datetime import date
+    # # johnLennon_json = json.dumps(date.today(), cls=MusicianEncoder, indent=4)
+    # print(johnLennon_json)
+    # print()
+    # johnLennon_py = json.loads(johnLennon_json, object_hook=musician_json_to_py)
+    # print(johnLennon_py)
+    # print(johnLennon_py == johnLennon)
 
     # # List of objects
-    # johnLennon = Musician('John Lennon', is_band_member=True)
+    johnLennon = Musician('John Lennon', is_band_member=True)
     # paulMcCartney = Musician('Paul McCartney', is_band_member=True)
     # georgeHarrison = Musician('George Harrison', is_band_member=True)
     # ringoStarr = Musician('Ringo Starr', is_band_member=True)
-    # the_beatles = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
+    # the_beatles = (johnLennon, paulMcCartney, georgeHarrison, ringoStarr)
+    #
+    # the_beatles_json = json.dumps(the_beatles, default=musician_py_to_json, indent=4)
+    # print(the_beatles_json)
 
+    # print(johnLennon.__dict__)
+    # print(vars(johnLennon))
