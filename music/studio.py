@@ -135,7 +135,7 @@ if __name__ == "__main__":
     #     print("That's it.")
 
     # Demonstrate writing to a text file - <outfile>.write(), <outfile>.writelines()
-    the_beatles = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
+    # the_beatles = [johnLennon, paulMcCartney, georgeHarrison, ringoStarr]
     # file = get_data_dir() / 'the_beatles.txt'
     # with open(file, 'w') as f:
     #     # for beatle in the_beatles:
@@ -158,18 +158,18 @@ if __name__ == "__main__":
     # print(theBeatles == the_beatles)
     # print()
 
-    # Demonstrate writing to a binary file - pickle.dump()
-    file = get_data_dir() / 'the_beatles.pickled'
-    # with open(file, 'wb') as f:
-    #     dump(the_beatles, f)
-    # print()
+    # # Demonstrate writing to a binary file - pickle.dump()
+    # file = get_data_dir() / 'the_beatles.pickled'
+    # # with open(file, 'wb') as f:
+    # #     dump(the_beatles, f)
+    # # print()
 
-    # Demonstrate reading from a binary file - pickle.load()
-    with open(file, 'rb') as f:
-        theBeatles = load(f)
-    print(theBeatles)
-    print(theBeatles == the_beatles)
-    print()
+    # # Demonstrate reading from a binary file - pickle.load()
+    # with open(file, 'rb') as f:
+    #     theBeatles = load(f)
+    # print(theBeatles)
+    # print(theBeatles == the_beatles)
+    # print()
 
     # # Demonstrate JSON encoding/decoding of Studio objects
     # # Single object
@@ -179,7 +179,7 @@ if __name__ == "__main__":
     #                   formed=1965, split=1995)
     # abbey_road = Studio('Abbey Road', 'London', *[the_beatles, pink_floyd],
     #                     start_date=date(1967, 1, 1), end_date=date(1967, 12, 31), )
-    print()
+    # print()
 
     # # List of objects
     # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],

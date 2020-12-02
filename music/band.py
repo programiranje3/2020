@@ -209,18 +209,18 @@ if __name__ == "__main__":
 
     # # Demonstrate JSON encoding/decoding of Band objects
     # Single object
-    the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
-                       formed=1962, split=1970)
-    the_beatles_json = json.dumps(the_beatles, default=band_py_to_json, indent=4)
-    print(the_beatles_json)
-    the_beatles_py = json.loads(the_beatles_json, object_hook=band_json_to_py)
-    print(the_beatles_py == the_beatles)
-    print()
-
-    # # List of objects
     # the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
     #                    formed=1962, split=1970)
-    # pink_floyd = Band('Pink Floyd', rogerWaters, nickMason, rickWright, davidGilmour,
-    #                   formed=1965, split=1995)
+    # the_beatles_json = json.dumps(the_beatles, default=band_py_to_json, indent=4)
+    # print(the_beatles_json)
+    # the_beatles_py = json.loads(the_beatles_json, object_hook=band_json_to_py)
+    # print(the_beatles_py == the_beatles)
+    # print()
+
+    # List of objects
+    the_beatles = Band('The Beatles', *[johnLennon, paulMcCartney, georgeHarrison, ringoStarr],
+                       formed=1962, split=1970)
+    pink_floyd = Band('Pink Floyd', rogerWaters, nickMason, rickWright, davidGilmour,
+                      formed=1965, split=1995)
 
 
