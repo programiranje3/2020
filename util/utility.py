@@ -21,12 +21,16 @@ def date_py_to_json(a_date):
     not as the default= parameter in json.dumps() (which creates "\"<iso_date_str>\"", not "<iso_date_str>" strings).
     """
 
+    return a_date.isoformat() if isinstance(a_date, date) else 'null'
+
 
 def date_json_to_py(iso_date):
     """Converts string formatted as 'YYYY-mm-dd' to datetime.date object.
     To be used directly to update date fields in conversions of JSON strings to Python objects,
     not as the object_hook= parameter in json.loads().
     """
+
+    return date.fromisoformat(iso_date) if (iso_date, str) else None
 
 
 def get_project_dir():
